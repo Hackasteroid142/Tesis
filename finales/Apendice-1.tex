@@ -1,0 +1,73 @@
+\chapter{Gradiente Chi-cuadrado Bispectrum}
+\label{finales:apendice1}
+El $\chi^2$ para el Bispectrum está dado por la ecuación \ref{eq:chi-bispectrum}. Donde $I$ hace referencia a la imagen, $V_{Bj}$ y $V'_{Bj}$ a las visibilidades bispectrum observadas y modelo respectivamente, $\sigma^{2}_{Bj}$ la desviación estándar bispectrum (ecuación \ref{eq:sigma} del capitulo \ref{sec:bispectrum}) y $N_{B}$ a la cantidad de observaciones bispectrum independientes. 
+
+\begin{equation}
+    \chi^{2}_{bispec}(I) = \frac{1}{2N_{B}} \sum_{j} \frac{| V_{Bj}  - V'_{Bj}|^2}{\sigma^{2}_{Bj}}
+    \label{eq:chi-bispectrum}
+\end{equation}
+
+Para obtener el gradiente de esta se deriva con respecto a la Imagen quedando la ecuación \ref{eq:grad_step1}. Para esta se sabe que $V_{Bj}$, $\sigma^{2}_{Bj}$ y $N_{B}$ son constantes, pero $V'_{B}$ es dependiente de la imagen, además de aplicar la propiedad de mostrada en la ecuación \ref{eq:prop_mod} donde es una función $f$ cualquiera.
+
+\begin{equation}
+\label{eq:prop_mod}
+    \frac{\partial{|f|^2}}{\partial{I}} = \frac{\partial{f}}{\partial{I}} f^* + f \frac{\partial{f^*}}{\partial{I}}
+\end{equation}
+
+
+\begin{equation}
+    \label{eq:grad_step1}
+    \begin{split}
+        \frac{\partial{\chi^{2}_{bis}}}{\partial_{I_{k}}} &= \frac{1}{2N_{B}} \sum_{j} \frac{1}{\sigma^{2}_{Bj}} \frac{\partial{|V_{Bj} - V'_{Bj}|^2}}{\partial I_{k}} \\&=
+        \sum_{j} \frac{1}{\sigma^{2}_{Bj}} \bigg( -\frac{\partial{V'_{Bj}}}{\partial{I_{k}}} (V_{Bj} - V'_{Bj})^{*} - (V_{Bj} - V'_{Bj}) \bigg(-\frac{\partial{V^{'*}_{Bj}}}{\partial{I_{k}}}\bigg)  \bigg)
+    \end{split}
+\end{equation}
+
+Para resolver la derivada mostrada en la ecuación \ref{eq:grad_step1} se debe tener en cuenta que $V'_{Bj} = V'_{1j}V'_{2j}V'_{3j}$. Teniendo esto en cuenta se obtiene lo mostrado en la ecuación \ref{eq:grad_step2}.
+
+\begin{equation}
+    \label{eq:grad_step2}
+    \begin{split}
+        \frac{\partial{V'_{Bj}}}{\partial{I_{k}}} &= \frac{\partial(V'_{1j}V'_{2j}V'_{3j})}{\partial(I_{k})} \\
+        &= \bigg( \frac{\partial{V'_{1j}}}{\partial{I_{k}}}\bigg) V'_{2j} V'_{3j} + V'_{1j} \bigg( \frac{\partial{V'_{2j}}}{\partial{I_{k}}}\bigg) V'_{3j} + V'_{1j} V'_{2j} \bigg( \frac{\partial{V'_{3j}}}{\partial{I_{k}}}\bigg)
+    \end{split}
+\end{equation}
+
+Esta se puede simplificar multiplicando por un uno conveniente de la forma $\frac{V_{1j}V_{2j}V_{3j}}{V_{1j}V_{2j}V_{3j}}$, obteniendo así la ecuación \ref{eq:grad_step3}.
+
+ \begin{equation}
+    \label{eq:grad_step3}
+    \begin{split}
+        \frac{\partial{V'_{Bj}}}{\partial{I_{k}}} &= \bigg( \frac{\partial{V'_{1j}}}{\partial{I_{k}}}\bigg) \frac{V'_{Bj}}{V'_{1j}} + \bigg( \frac{\partial{V'_{2j}}}{\partial{I_{k}}}\bigg) \frac{V'_{Bj}}{V'_{2j}} + \bigg( \frac{\partial{V'_{3j}}}{\partial{I_{k}}}\bigg) \frac{V'_{Bj}}{V'_{3j}} \\ 
+        &= \bigg(\bigg( \frac{\partial{V'_{1j}}}{\partial{I_{k}}}\bigg) \frac{1}{V'_{1j}} + \bigg( \frac{\partial{V'_{2j}}}{\partial{I_{k}}}\bigg) \frac{1}{V'_{2j}} + \bigg( \frac{\partial{V'_{3j}}}{\partial{I_{k}}}\bigg) \frac{1}{V'_{3j}} \bigg)V'_{Bj}
+    \end{split}
+\end{equation}
+
+La derivada faltante en la ecuación \ref{eq:grad_step3} se puede obtener considerando que la visibilidad modelo se puede definir como lo mostrado en la ecuación \ref{eq:vis} y que su derivada está dada por la ecuación \ref{eq:dev_vis}. Cabe destacar que el valor de $a$ es de 1, 2 o 3. 
+
+\begin{equation}
+    \label{eq:vis}
+    V'_{aj} \approx \sum_{k} I_{k} e^{-2\pi i (u_{aj}x_{k} + v_{aj}y_{k})}
+\end{equation}
+
+\begin{equation}
+    \label{eq:dev_vis}
+    \frac{\partial{V'_{aj}}}{\partial{I_{k}}} \approx e^{-2\pi i (u_{aj}x_{k} + v_{aj}y_{k})}
+\end{equation}
+
+De está forma la ecuación \ref{eq:grad_step3} quedaría de la forma.
+
+\begin{equation}
+    \label{eq:grad_step4}
+    \frac{\partial{V'_{Bj}}}{\partial{I_{k}}} = V'_{Bj} \bigg( \frac{e^{-2\pi i (u_{1j}x_{k} + v_{1j}y_{k})}}{V'_{1j}} + \frac{e^{-2\pi i (u_{2j}x_{k} + v_{2j}y_{k})}}{V'_{2j}} + \frac{e^{-2\pi i (u_{3j}x_{k} + v_{3j}y_{k})}}{V'_{3j}}\bigg)
+\end{equation}
+
+Finalmente, si se considera que $\frac{\partial{V'_{Bj}}}{\partial{I_{k}}} = \bigg(\frac{\partial{V'_{Bj}}}{\partial{I_{k}}}\bigg)^* $ y que $T^*_{ij} + T_{ij} = Re(T_{ij})$ siendo $T_{ij}$ un número complejo, se podría reescribir la ecuación \ref{eq:grad_step1} teniendo en cuenta que para este caso $T_{ij} = (V_{Bj} - V'_{Bj}) \frac{\partial{V^{'*}_{Bj}}}{\partial{I_{k}}}$. De esta forma, en la ecuación \ref{eq:grad_step5}, se obtiene el valor para el gradiente del chi2 en Bispectrum.
+
+\begin{equation}
+    \label{eq:grad_step5}
+    \begin{split}
+        \frac{\partial{\chi^{2}_{bis}}}{\partial_{I_{k}}} &= \frac{-1}{N_{B}} \sum_{j} \frac{1}{\sigma^{2}_{Bj}} Re\bigg((V_{Bj} - V'_{Bj}) \bigg( \frac{\partial{V'_{Bj}}}{\partial{I_{k}}} \bigg)^{*} \bigg) \\
+        &= \frac{-1}{N_{B}} \sum_{j} \frac{1}{\sigma^{2}_{Bj}} Re\bigg((V_{Bj} - V'_{Bj}) V^{'*}_{Bj} \bigg( \frac{e^{2\pi i (u_{1j}x_{k} + v_{1j}y_{k})}}{V^{'*}_{1j}} + \frac{e^{2\pi i (u_{2j}x_{k} + v_{2j}y_{k})}}{V^{'*}_{2j}} + \frac{e^{2\pi i (u_{3j}x_{k} + v_{3j}y_{k})}}{V'^{'*}_{3j}}\bigg) \bigg) 
+    \end{split}
+\end{equation}

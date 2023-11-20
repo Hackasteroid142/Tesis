@@ -1,0 +1,88 @@
+\documentclass[coguia]{tesis-usach}
+% Opciones: coguia, propuesta
+
+\begin{document}
+\baselineskip 23pt
+\frontmatter								% Utiliza numeración romana
+
+% ### Cubierta de la tesis ###
+\thispagestyle{empty}
+\include{preliminares/cubierta}
+
+% ### Páginas preliminares de la tesis ###
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}		% Hace que no aparezca la línea horizontal superior al principio de estas páginas
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{}
+
+{\setstretch{1.0}						% Interlineado en las páginas preliminares						% Si es propuesta no se mostrará
+
+% ### Resumen de la tesis
+\setcounter{page}{0} 
+\include{preliminares/abstract}
+
+% ### Dedicatoria y agredecimientos de la tesis ###
+\input{preliminares/dedicatoria}		% En caso de no querer agregarlos, comente esta línea
+\input{preliminares/agradecimiento}
+
+% ### Índices ###
+\tableofcontents							%% Tabla de contenido
+
+\listoftables							%% Indice de tablas
+\listoffigures							%% Indice de figuras
+\listofalgorithms						%% Indice de algoritmos (Optativo: En caso de poseer algoritmos)
+\AtBeginEnvironment{algorithmic}{\setstretch{1.5}} % Interlineado de los algoritmos
+} % end \setstretch{1.0}
+
+% ### Cuerpo de la tesis ###
+\mainmatter								% Reinicia el contador de páginas para partir de 1 y usando números arábicos.
+
+% ### Capítulos de la tesis ###
+\input{chapters/1-Introduccion}
+\input{chapters/2-Marco}
+\input{chapters/3-Estado}
+\input{chapters/4-Analisis}
+%\input{chapters/5-SelfCalibration}
+%\input{chapters/6-Bispectrum}
+\input{chapters/7-Implementacion}
+\input{chapters/8-Resultados}
+\input{chapters/10-Discusion}
+\input{chapters/9-Conclusiones}
+
+{\setstretch{1.0}						% Interlineado en las páginas finales
+% ### Optativo: Glosario ###
+%\clearpage
+%\addcontentsline{toc}{chapter}{Glosario}
+%\input{finales/Glosario}
+
+% ### Bibliografía de la tesis ###
+\clearpage
+\addcontentsline{toc}{chapter}{Referencias bibliogr\'aficas} % Comando para agregar el índice a la Tabla de
+\bibliographystyle{apa-good}
+\bibliography{bibliografia}
+
+% ### Optativo: Anexos de la tesis ###
+\clearpage
+\anexo
+\addcontentsline{toc}{chapter}{Anexos}
+
+\input{finales/Anexo-1}
+\input{finales/Anexo-2}
+% ### Anexos ###
+
+% ### Optativo: Apéndices de la tesis ###
+\clearpage
+\apendice
+\addcontentsline{toc}{chapter}{Apéndices}
+
+% ### Apéndices ###
+\input{finales/Apendice-1}
+\input{finales/Apendice-2}
+\input{finales/Apendice-3}
+\input{finales/Apendice-4}
+\input{finales/Apendice-5}
+} % end \setstretch{1.0}
+
+\end{document}
+% end

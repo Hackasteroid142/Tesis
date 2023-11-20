@@ -1,0 +1,18 @@
+\resumenCastellano{
+
+
+La síntesis de imágenes en radio-interferometría crea mapas de ondas de radio del cielo mediante un conjunto de antenas. Sin embargo, estos datos son corrompidos por distintos factores como las distorsiones atmosféricas. Este ruido se presenta como un factor complejo y constante que multiplica la señal recibida de cada antena. La auto-calibración reduce este factor multiplicativo mediante iteraciones que generan imágenes, encuentran ganancias asociadas y ajustan los datos. Aunque en el primer paso de \textit{self-calibration} se considere la síntesis de imágenes, este en si es un problema indeterminado o mal puesto debido a que la transformación que va desde el plano de la imagen hasta los datos es altamente no invertible, por lo que una infinidad de imágenes cumple con los datos recibidos. Sin embargo, existen métodos que permiten la generación del mapa como CLEAN o MEM pero son altamente sensibles al factor multiplicativo.  Aunque una técnica reciente denominada \textit{bispectrum} permite generar mapas de los datos sin verse afectado por el factor multiplicativo, siendo una posible alternativa para efectuar el proceso de calibración. En este trabajo se propone efectuar una calibración mediante \textit{self-calibration} y síntesis de imágenes utilizando \textit{bispectrum} además de otras regularizaciones. De esta manera se crea un método de \textit{self-calibration} que logra afectar a las visibilidades y mejorar la imagen final. Se implementa el método \textit{Bispectrum}, como así también el método de $\chi^2$ capaz de obtener el valor de la función y su gradiente dando factibilidad para una implementación de optimizador. Con esto se experimenta con diferentes configuraciones para \textit{self-calibration} para comparar mejoras en la imagen final.
+
+\vspace*{0.5cm}
+\KeywordsES{astroinformática; calibración; síntesis de imágenes; interferometría; optimización; problema mal puesto.}
+}
+
+\newpage
+
+\resumenIngles{
+
+Image synthesis in radio interferometry generates radio wave maps of the sky using an array of antennas. However, these data are corrupted by various factors like atmospheric distortions. This noise presents itself as a complex and constant factor that multiplies the signal received by each antenna. Self-calibration reduces this multiplicative factor through iterations that generate images, identify associated gains, and adjust the data. Although the initial step of self-calibration involves image synthesis, it inherently poses an ill-posed problem due to the highly non-invertible transformation from the image plane to the data, resulting in countless images that match the received data. However, methods like CLEAN or MEM enable map generation but are highly sensitive to the multiplicative factor. A recent technique called the "bispectrum" allows map generation from data without being affected by the multiplicative factor, serving as a potential alternative for the calibration process. In this work, we propose performing calibration using self-calibration and image synthesis employing the "bispectrum", along with other regularizations. This creates a self-calibration method that impacts the visibilities and improves the final image. The "Bispectrum" method, as well as the $\chi^2$ method capable of obtaining the function's value and gradient, are implemented, providing feasibility for an optimizer implementation. We then experiment with different self-calibration configurations to compare enhancements in the final image.
+
+\vspace*{0.5cm}
+\KeywordsEN{Astroinformatics; calibration; image synthesis; interferometry; optimization; ill-posed problem}
+}

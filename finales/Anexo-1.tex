@@ -1,0 +1,40 @@
+\chapter{Derivación ecuación \textit{Bispectrum}}
+\label{finales:anexo1}
+
+La visibilidad no calibrada puede ser representada mediante la ecuación \Ref{equation:vis_corr}
+
+\begin{equation}
+    \tilde{V}_{ij} = g_{i}g_{j}^{*}V_{ij} = |g_{i}g_{j}^{*}V_{ij}|e^{i|\theta_{i} - \theta_{j} + \phi_{ij}|}
+    \label{equation:vis_corr}
+\end{equation}
+
+donde $\theta_{i} = arg\ g_{i}$ y $\phi_{ij} = arg V_{ij}$. Por lo que $\tilde{\phi_{ij}}$ sería definido según la ecuación \Ref{equation:phi_anex} \citep{Chael_2018}.
+
+\begin{equation}
+    \tilde{\phi_{ij}} = arg \tilde{V}_{ij} = \theta_{i} - \theta_{j} + \phi_{ij}
+    \label{equation:phi_anex}
+\end{equation}
+
+Lo anterior para ser llevado al contexto de \textit{Bispectrum} se debe tener en consideración un conjunto de antenas $i,j,k$, que aplicando la ecuación \Ref{equation:phi_anex} se obtiene lo siguiente para cada par de antenas. 
+
+\begin{equation}
+  \label{eq:all_phi}
+  \begin{aligned}
+    \tilde{\phi_{ij}} = arg \tilde{V}_{ij} = \theta_{i} - \theta_{j} + \phi_{ij}\\        
+    \tilde{\phi_{jk}} = arg \tilde{V}_{jk} = \theta_{j} - \theta_{k} + \phi_{jk}\\
+    \tilde{\phi_{ki}} = arg \tilde{V}_{ki} = \theta_{k} - \theta_{i} + \phi_{ki}
+  \end{aligned}
+\end{equation}
+
+Si se suman las relaciones expresadas en \Ref{eq:all_phi} se obtiene lo siguiente.
+
+\begin{equation}
+  \label{eq:phi_clear}
+  \begin{split}
+    \tilde{\phi_{ij}}+\tilde{\phi_{jk}}+\tilde{\phi_{ki}} &=  \theta_{i} - \theta_{j} + \phi_{ij} + \theta_{j} - \theta_{k} + \phi_{jk} + \theta_{k} - \theta_{i} + \phi_{ki} \\
+    & = \phi_{ij} + \phi_{jk} + + \phi_{ki} + (\theta_{i} - \theta_{i}) + (\theta_{j} - \theta_{j}) + (\theta_{k} - \theta_{k})\\
+    &= \phi_{ij} + \phi_{jk} + + \phi_{ki}
+  \end{split}
+\end{equation}
+
+En la ecuación \Ref{eq:phi_clear} se pudo eliminar los ángulos que afectaban a la visibilidad observada, dando así a entender que las visibilidades en \textit{Bispectrum} no se ven afectadas por el factor de fase. 

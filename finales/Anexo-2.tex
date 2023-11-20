@@ -1,0 +1,234 @@
+\chapter{Script de Self-calibration en CASA}
+\label{finales:anexo2}
+
+A continuación se presenta un script de calibración presentado en \cite{CASA_self_cal}. Cabe destacar que cada comando presentado en el script debe ser ingresado en el software CASA. 
+
+\begin{lstlisting} [language=Python, caption={Self-calibration en CASA},captionpos=b]
+# Primer ciclo de self-calibration
+
+os.system('rm -rf first_image.*')
+tclean(vis='sis14_twhya_calibrated_flagged.ms',
+       imagename='first_image',
+       field='5',
+       spw='',
+       specmode='mfs',
+       deconvolver='hogbom',
+       nterms=1,
+       gridder='standard',
+       imsize=[250,250],
+       cell=['0.1arcsec'],
+       weighting='natural',
+       threshold='0mJy',
+       niter=5000,
+       interactive=True,
+       savemodel='modelcolumn')
+
+os.system("rm -rf phase.cal")
+gaincal(vis="sis14_twhya_calibrated_flagged.ms",
+        caltable="phase.cal",
+        field="5",
+        solint="inf",
+        calmode="p",
+        refant="DV22",
+        gaintype="G")
+
+## Graficos de tiempo vs PSNR y tiempo vs fase
+plotms(vis='phase.cal', xaxis='time', yaxis='SNR')
+plotms(vis='phase.cal', xaxis='time', yaxis='phase')
+
+## Grafico de fases
+plotms(vis="phase.cal", 
+       xaxis="time", 
+       yaxis="phase", 
+       gridrows=3, 
+       gridcols=3, 
+       iteraxis="antenna", 
+       plotrange=[0,0,-30,30], 
+       coloraxis='corr',
+       titlefont=7, 
+       xaxisfont=7, 
+       yaxisfont=7, 
+       plotfile="sis14_selfcal_phase_scan.png", 
+       showgui = True)
+
+applycal(vis="sis14_twhya_calibrated_flagged.ms",
+         field="5",
+         gaintable=["phase.cal"],
+         interp="linear")
+
+os.system("rm -rf sis14_twhya_selfcal.ms sis14_twhya_selfcal.ms.flagversions")
+split(vis="sis14_twhya_calibrated_flagged.ms",
+      outputvis="sis14_twhya_selfcal.ms",
+      datacolumn="corrected")
+
+# Segundo ciclo de self-calibration
+
+os.system('rm -rf second_image.*')
+tclean(vis='sis14_twhya_selfcal.ms',
+       imagename='second_image',
+       field='5',
+       spw='',
+       specmode='mfs',
+       deconvolver='hogbom',
+       nterms=1,
+       gridder='standard',
+       imsize=[250,250],
+       cell=['0.1arcsec'],
+       weighting='natural',
+       threshold='0mJy',
+       interactive=True,
+       niter=5000,
+       savemodel='modelcolumn')
+
+os.system("rm -rf phase_2.cal")
+gaincal(vis="sis14_twhya_selfcal.ms",
+        caltable="phase_2.cal",
+        field="5",
+        solint="170s",
+        calmode="p",
+        refant="DV22",
+        gaintype="G")
+
+## Grafico de fases luego de segunda iteracion 
+plotms(vis="phase_2.cal", 
+       xaxis="time", 
+       yaxis="phase", 
+       gridrows=3, 
+       gridcols=3, 
+       iteraxis="antenna", 
+       plotrange=[0,0,-30,30], 
+       coloraxis='corr',
+       titlefont=7, 
+       xaxisfont=7, 
+       yaxisfont=7, 
+       plotfile="sis14_selfcal_phase_scan_2.png",  
+       showgui = True)
+
+applycal(vis="sis14_twhya_selfcal.ms",
+         field="5",
+         gaintable=["phase_2.cal"],
+         interp="linear")
+         
+os.system("rm -rf sis14_twhya_selfcal_2.ms sis14_twhya_selfcal_2.ms.flagversions")
+split(vis="sis14_twhya_selfcal.ms",
+      outputvis="sis14_twhya_selfcal_2.ms",
+      datacolumn="corrected")
+
+# Tercer ciclo de self-calibration
+
+os.system('rm -rf third_image.*')
+tclean(vis='sis14_twhya_selfcal_2.ms',
+       imagename='third_image',
+       field='5',
+       spw='',
+       specmode='mfs',
+       deconvolver='hogbom',
+       nterms=1,
+       gridder='standard',
+       imsize=[250,250],
+       cell=['0.1arcsec'],
+       weighting='natural',
+       threshold='0mJy',
+       interactive=True,
+       niter=5000,
+       savemodel='modelcolumn')
+
+os.system("rm -rf amp.cal")
+gaincal(vis="sis14_twhya_selfcal_2.ms",
+        caltable="phase_3.cal",
+        field="5",
+        solint="30s",
+        calmode="p",
+        refant="DV22",
+        gaintype="T")
+
+## Grafico de fases luego de tercera iteracion 
+plotms(vis="phase_3.cal", 
+       xaxis="time", 
+       yaxis="phase", 
+       gridrows=3, 
+       gridcols=3, 
+       iteraxis="antenna", 
+       plotrange=[0,0,-30,30], 
+       coloraxis='corr',
+       titlefont=7, 
+       xaxisfont=7, 
+       yaxisfont=7, 
+       plotfile="sis14_selfcal_phase_scan_3.png",  
+       showgui = True)
+
+applycal(vis="sis14_twhya_selfcal_2.ms",
+         field="5",
+         gaintable=["phase_3.cal"],
+         interp="linear")
+
+os.system("rm -rf sis14_twhya_selfcal_3.ms sis14_twhya_selfcal_3.ms.flagversions")
+split(vis="sis14_twhya_selfcal_2.ms",
+      outputvis="sis14_twhya_selfcal_3.ms",
+      datacolumn="corrected")
+
+# Cuarto ciclo de self-calibration
+
+os.system('rm -rf fourth_image.*')
+tclean(vis='sis14_twhya_selfcal_3.ms',
+       imagename='fourth_image',
+       field='5',
+       spw='',
+       specmode='mfs',
+       deconvolver='hogbom',
+       nterms=1,
+       gridder='standard',
+       imsize=[250,250],
+       cell=['0.1arcsec'],
+       weighting='natural',
+       threshold='0mJy',
+       interactive=True,
+       niter=5000)
+
+os.system("rm -rf amp.cal")
+gaincal(vis='sis14_twhya_selfcal_3.ms',
+        caltable="amp.cal",
+        field="5",
+        solint="inf",
+        calmode="ap",
+        refant="DV22",
+        gaintype="G",
+        solnorm=True)
+
+## Grafico de fases luego de cuarta iteracion 
+plotms(vis="amp.cal", 
+       xaxis="time", 
+       yaxis="amp", 
+       gridrows=3, 
+       gridcols=3, 
+       iteraxis="antenna", 
+       plotrange=[0,0,0,0],
+       coloraxis='corr',
+       titlefont=7, 
+       xaxisfont=7, 
+       yaxisfont=7, 
+       plotfile="sis14_selfcal_amp_scan.png",  
+       showgui = True)
+
+applycal(vis='sis14_twhya_selfcal_3.ms',
+         field="5",
+         gaintable=["amp.cal"],
+         interp="linear")
+
+os.system('rm -rf fifth_image.*')
+tclean(vis='sis14_twhya_selfcal_4.ms',
+       imagename='fifth_image',
+       field='5',
+       spw='',
+       specmode='mfs',
+       deconvolver='hogbom',
+       nterms=1,
+       gridder='standard',
+       imsize=[250,250],
+       cell=['0.1arcsec'],
+       weighting='natural',
+       threshold='0mJy',
+       interactive=True,
+       niter=5000,
+       savemodel='modelcolumn')
+\end{lstlisting}

@@ -1,0 +1,38 @@
+\chapter{Implementación patrón de diseño Decorator en Python}
+\label{finales:apendice2}
+
+El siguiente código de ejemplo es una implementación del patrón de diseño \textit{Decorator}, especificamente en el lenguaje de programación Python. Este código se basa en la figura \ref{fig:gamma2002patrones}.
+
+g\begin{lstlisting} [language=Python, caption={Patrón de diseño decorator},captionpos=b]
+# Componente base
+class Component:
+    def operation(self):
+        pass
+
+# Componente concreto
+class ConcreteComponent(Component):
+    def operation(self):
+        print("Hola Mundo")
+
+# Decorador base
+class Decorator(Component):
+    def __init__(self, component):
+        self.component = component
+
+    def operation(self):
+        self.component.operation()
+
+# Decorador concreto
+class ConcreteDecorator(Decorator):
+    def operation(self):
+        super().operation()
+        self.additional_operation()
+
+    def additional_operation(self):
+        print("Otro Hola mundo")
+
+# Uso
+component = ConcreteComponent()
+decorated_component = ConcreteDecorator(component)
+decorated_component.operation()
+\end{lstlisting}

@@ -1,0 +1,16 @@
+\chapter{Comandos para creación de MS simulado}
+\label{finales:apendice5}
+
+Los comandos mostrados a continuación deben ser introducidos en el framework CASA, donde los parámetros definidos no necesariamente deben llamarse de la misma manera, ya que los mostrados en el código de ejemplo fueron los utilizados para la creación del conjunto de datos. 
+
+\begin{lstlisting} [language=Python, caption={Script para generación de datos reducido.},captionpos=b]
+#Creacion de imagen en formato Image
+importfits(fitsimage='sim_HD163296_obs_8.fits', imagename='sim_HD163296_obs_8.image')
+
+#Ingreso de columna modelo en conjunto de datos reducido. 
+ft(vis='HD163296_short_obs_8.ms/', model='sim_HD163296_obs_8.image')
+
+#Creacion de nuevo conjunto de datos. 
+mstransform(vis='HD163296_short_obs_8.ms/', outputvis='sim_HD163296_obs_8.ms', datacolumn='model')
+
+\end{lstlisting}

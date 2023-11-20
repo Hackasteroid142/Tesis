@@ -1,0 +1,21 @@
+\chapter{Script para generación de datos reducido.}
+\label{finales:apendice4}
+
+\begin{lstlisting} [language=Python, caption={Script para generación de datos reducido.},captionpos=b]
+import casacore.tables as pt
+import numpy as np
+
+ms_as_table = pt.table('<path_to_ms>')
+
+observation_ids = ms_as_table.getcol("OBSERVATION_ID")
+count_observations = np.unique(observation_ids, return_counts=True)
+min_position = 8
+name_ms = '<name_ms>'
+output = name_ms + '_short_obs_' + str(min_position) + '.ms'
+
+for i, count in enumerate(count_observations[0]):
+    print('Observation id: ' + str(count) + " Amount: " + str(count_observations[1][i]))
+
+result = pt.taql('SELECT * FROM $ms_as_table WHERE OBSERVATION_ID==$min_position giving $output as plain;')
+print('MS successfully created')
+\end{lstlisting}

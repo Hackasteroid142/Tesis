@@ -1,0 +1,156 @@
+\chapter{Self-calibration}
+\label{cap:selfcalibration}
+
+\begin{comment}
+La síntesis de imágenes en radio-interferometría permite generar mapas (imágenes) de ondas de radio emitidas del cielo, las cuales son capturadas por un conjunto de antenas. Sin embargo, estos datos son corrompidos por distintos factores como las distorsiones atmosféricas. Este ruido se presenta como un factor complejo y constante que multiplica la señal recibida de cada antena. Sin embargo, el proceso de auto-calibracion o \textit{self-calibration} permite disminuir este factor, o también denominado ganancias, a través de un ciclo iterativo donde se crea una imagen con los datos actuales, se encuentra las ganancias asociadas a esta y se dividen los datos por las ganancias estimadas, volviendo al paso de generación de imagen de ser necesario. Aunque en el primer paso de \textit{self-calibration} se considere la síntesis de imágenes, este en si es un problema indeterminado o mal puesto debido a que la transformación que va desde el plano de la imagen hasta los datos es altamente no invertible, por lo que una infinidad de imágenes cumple con los datos recibidos. Sin embargo, existen métodos que permiten la generación del mapa como CLEAN o MEM pero son altamente sensibles al factor multiplicativo. Aunque una técnica reciente denominada \textit{bispectrum} permite generar mapas de los datos sin verse afectado por el factor multiplicativo, siendo una posible alternativa para efectuar el proceso de calibración. En este trabajo se propone efectuar una calibración mediante \textit{self-calibration} y síntesis de imágenes utilizando \textit{bispectrum} además de otras regularizaciones. Esto con el objetivo de responder la pregunta si el método de \textit{bispectrum} es la mejor opción para calibrar. Para esto se experimenta con diferentes simulaciones de datos, imágenes y métodos de síntesis para comparar y evaluar quien genera la mejor calibración. 
+\end{comment}
+
+
+Para la implementación de \textit{Self-calibration}  se probaron dos métodos para analizar cual es la mejor alternativa . El primero consiste en, como dice la literatura, optimizar la ecuación \ref{eq:self-calibration} para obtener el valor de las ganancias, para esto se aplico el método del gradiente conjugado el cual permite obtener un mínimo de la ecuación que se le entrega. Sin embargo, por el comportamiento periodico de las ganancias esté método no fue efectivo debido a que el resultado fue 
+
+El segundo método consiste en realizar una aproximación de las ganancias mediante una división de visibilidades. Este se basa en la ecuación \ref{eq:self-calibration-3} que permite relacionar las ganancias a obtener con las visibilidades observadas y las modelo, donde además esta permite la obtención tanto para fase como amplitud.
+
+\begin{equation}
+    V_{i,j,corr} = \frac{\tilde{V}_{ij}}{g_{i}g_{j}^{*}}
+    \label{eq:self-calibration-3}
+\end{equation}
+
+\section{Fase}
+
+Para corregir la fase en \textit{Self-calibration} es necesario comprender que las ganancias se pueden definir como indica la ecuación \ref{equation:gains}, donde el gran interés se encuentra en encontrar los ángulos ($\theta$) por pares de antenas que deben ser aplicados para corregir la fase que afecta a las visibilidades. Para esto es necesario definir la \ref{eq:self-calibration-3} junto con la expresión completa de las ganancias, obteniendo así la ecuación \ref{eq:self_inicial}. 
+
+\begin{equation}
+    g_{i}g_{j}^{*} = e^{2\pi i|\theta_{i} - \theta_{j}|}
+    \label{equation:gains}
+\end{equation}
+
+\begin{equation}
+    V_{i,j,corr} = \frac{\tilde{V}_{ij}}{e^{2\pi i|\theta_{i} - \theta_{j}|}}
+    \label{eq:self_inicial}
+\end{equation}
+
+Es posible obtener el valor para un $\theta$ asociado a una antena $i$ al comenzar a realizar operaciones sobre la ecuación \ref{eq:self_inicial}, de tal manera de dejar $\theta$ despejado. Para esto se presentan a continuación las operaciones aritméticas realizadas, partiendo por un despeje simple sobre la ecuación \ref{eq:self_inicial} dando como resultado la ecuación \ref{eq:phase1}. 
+
+\begin{equation}
+    e^{2\pi i|\theta_{i} - \theta_{j}|}= \frac{\tilde{V}_{ij}}{V_{i,j,corr}}
+    \label{eq:phase1}
+\end{equation}
+
+Aún así en la ecuación \ref{eq:phase1} se tienen dos ángulos distintos ($\theta_{i}, \theta_{j}$), lo que se consideraría las incógnitas a encontrar, sin embargo se tendría dos incógnitas y una ecuación por lo que no es posible encontrar el valor para ambos ángulos. Por lo mismo, para solventar esa complicación se asume que una antena tendrá ganancia 0 y se le define como antena de referencia por lo que solo se trabajan con visibilidades que tenga asociada esta antena. Esto permite que en la ecuación \ref{eq:phase1} desaparezca un ángulo transformándose así a la ecuación \ref{eq:phase2}.
+
+\begin{equation}
+    e^{2\pi i|\theta_{i}|}= \frac{\tilde{V}_{ij}}{V_{i,j,corr}}
+    \label{eq:phase2}
+\end{equation}
+
+Como se muestra en la ecuación \ref{eq:phase3} esta puede ser dividida en coordenadas polares y cartesianas. Esto trae consigo una ventaja ya que nos permite relacionarla con la tangente mediante la ecuación \ref{eq:phase4}, permitiendo así también permitirnos eliminar las amplitudes que afectan a la parte imaginaria como real. 
+
+\begin{equation}
+    e^{2\pi i|\theta_{i}|} =  cos(2 \pi \theta_i) + i  sen(2 \pi \theta_i) 
+    \label{eq:phase3}
+\end{equation}
+
+\begin{align} 
+Re = cos(2 \pi \theta)\\ 
+Im = sen(2 \pi \theta)
+\end{align}
+
+
+\begin{equation}
+    tg(2\pi \theta_i) = \frac{Im}{Re}
+    \label{eq:phase4}
+\end{equation}
+
+Finalmente, la ecuación que permite obtener el ángulo que se debe aplicar para corregir esta dada por la ecuación \ref{eq:phase5}.
+
+\begin{equation}
+    \theta_{i} = \frac{1}{2\pi}arctg(\frac{Im}{Re})
+    \label{eq:phase5}
+\end{equation}
+
+Sin embargo, para mejorar el resultado hay que tener en cuenta dos métodos mas. El primero es el promedio en el tiempo que se menciona en PAPER SELF-CALIBRATION y el segundo es el de un promedio ponderado para darle mayor importancia a aquellos ángulos que tengan una mayor relevancia. 
+
+
+
+
+
+
+
+Por otro lado, el promedio ponderado se realiza sobre los ángulos encontrados mediante la ecuación \ref{eq:phase5} y este es calculado mediante la ecuación \ref{eq:prom}. Donde $\theta$ son los ángulos encontrados y $w$ es el peso asociado a las visibilidades asociadas a los $\theta$.
+
+\begin{equation}
+    \theta' = \frac{\sum \theta w}{\sum w}
+    \label{eq:prom}
+\end{equation}
+
+Todo lo mencionado anteriormente es combinado en un algoritmo en el cual se obtiene los ángulos para las visibilidades asociadas a la antena de referencia, se calcula los rangos de tiempo y para cada rango se realiza el promedio ponderado reemplazando los nuevos ángulos. Este se puede ver representado en el algoritmo \ref{alg:selfcalibration}, cabe destacar que dentro de este algoritmo se representa el algoritmo \ref{alg:get_index} por la función \textit{get\_index}, por otro lado la función \textit{get\_thetas} aplica la ecuación \ref{eq:phase5} mostrada anteriormente. 
+
+\begin{algorithm}[!ht]
+	\caption{Algoritmo de \textit{Self-calibration}}
+	\label{alg:selfcalibration}
+	\begin{algorithmic}[1]
+	\REQUIRE Dataset en formato MS, rango de tiempo, antena de referencia.
+	\ENSURE Dataset en formato MS.
+	
+	\FOR{\textit{spectral window}} \STATE {
+	    vis\_obs = visibilities.data \\
+	    vis\_mod = visibilities.model \\ 
+            weight = visibilities.weight \\
+            time = visibilities.time \\ 
+
+            vis\_ant\_ref = where(vis\_obs.antenna1 == ant\_ref or vis\_obs.antenna1 == ant\_ref)
+
+            thetas = get\_thetas(vis\_obs, vis\_mod)
+        
+            indexs = get\_index(time, time\_range)
+            \FOR{ i in len(indexs) } \STATE {
+                slice = slice(indexs[i]:index[i+1])\\
+
+                thetas\_ant\_ref = thetas[slice]\\
+                weight\_ant\_ref = weight[slice]\\
+
+                wheighted\_thetas = thetas\_ant\_ref * weight\_ant\_ref \\ 
+                sum\_weight = sum(weight\_ant\_ref)\\
+                result = wheighted\_thetas / sum\_weight\\
+
+                thetas[slice] = result\\
+            }
+            \ENDFOR \\
+            
+            vis\_ant\_ref = applycal(vis\_obs,thetas)\\
+	} 
+	\ENDFOR
+	
+	\RETURN Retornar vis\_ant\_ref
+	
+	\end{algorithmic}
+\end{algorithm}
+
+Aún así puede existir el caso donde el tiempo ingresado sea definido por 'inf', es decir, un tiempo infinito. Para solventar este caso el promedio se realiza por número de \textit{scan}, por lo que no existiría un rango de tiempo asociado sino que se promediaría por visibilidades asociadas a un \textit{scan}. La diferencia con el algoritmo \ref{alg:selfcalibration} ya no estaría utilizando el algoritmo \ref{alg:get_index} y tampoco realizando la iteración por las particiones encontradas, sino que se buscaría los números de \textit{scan} asociados al dataset y se iteraría en cada uno para buscar las visibilidades asociadas para realizar el mismo promedio que se realiza en el algoritmo \ref{alg:selfcalibration}.
+
+
+
+La función \textit{applycal} realiza la acción de aplicar los thetas encontrados a las visibilidades ingresadas, para hacer esto implementa la ecuación \ref{eq:applycal}
+
+\begin{equation}
+    V_{corr} = \frac{V_{obs}}{e^{2 \pi i \theta}}
+    \label{eq:applycal}
+\end{equation}
+
+\section{Amplitud}
+
+Para la realización de la calibración en amplitud se toma en consideración el análisis realizado para fase, pero la ecuación \ref{eq:phase2} se transforma en la ecuación \ref{eq:amp1}. Así también, otra diferencia a encontrar es en la función \textit{applycal} utilizada en al algoritmo \ref{alg:selfcalibration}, que es dado por la ecuación \ref{eq:amp2}
+
+\begin{equation}
+    A = \bigg|\frac{V\_obs}{V\_mod}\bigg| 
+    \label{eq:amp1}
+\end{equation}
+
+\begin{equation}
+    vis\_corr = \frac{vis\_obs}{A}
+    \label{eq:amp2}
+\end{equation}
+
+Al igual que en el caso de la fase, si se ingresa un valor como 'inf' para el tiempo, se considera la utilización de las visibilidades asociadas a un número de \textit{scan} para poder realizar el promedio ponderado. 
+
+

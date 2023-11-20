@@ -1,0 +1,32 @@
+\chapter{Bispectrum}
+\label{cap:bispectrum}
+
+Para utilizar la ecuación \ref{eq:RML} mostrada en la sección \ref{subcap:sintesis} es necesario definir la ecuación a minimizar para los datos del modo bispectrum, para estos se utilizará la definida en el articulo \cite{Chael_2018}. Este define la ecuación \ref{eq:bispectrum}
+
+\begin{equation}
+    \chi^{2}_{bispec}(I) = \frac{1}{2N_{B}} \sum_{j} \frac{| V_{Bj}  - V'_{Bj}|^2}{\sigma^{2}_{Bj}}
+    \label{eq:bispectrum}
+\end{equation}
+
+Donde $V_{Bj}$ corresponde a las visibilidades observadas de $I$ en formato \textit{Bispectrum}, $N_{B}$ corresponde a la cantidad de medidas \textit{Bispectrum}, $V'_{Bj}$ corresponde a las visibilidades observadas en formato \textit{Bispectrum} y $\sigma^{2}_{Bj}$ corresponde a la varianza estimada. Para calcular este último es necesario utilizar la ecuación \ref{eq:sigma}.
+
+\begin{equation}
+    \sigma_{B} = |V_{B}| \sqrt{\frac{\sigma^{2}_{1}}{|V_{1}|^{2}} + \frac{\sigma^{2}_{2}}{|V_{2}|^{2}} + \frac{\sigma^{2}_{3}}{|V_{3}|^{2}}}
+    \label{eq:sigma}
+\end{equation}
+
+Para obtener los datos necesarios en las ecuaciones anteriores se realiza la creación de un algoritmo que busca las posibles combinaciones de tres que se pueden realizar con las antenas disponibles y calcular el sigma para todos los datos. Luego de esto se busca las visibilidades observadas, modelos y los sigmas relacionadas a la combinación de antenas. Cabe destacar que para disminuir la cantidad de combinaciones disponibles se utiliza una antena de referencia que permite disminuir esta cantidad. 
+
+ALGORITMO?
+
+La ecuación \ref{eq:bispectrum} se resuelve mediante el gradiente conjugado, por lo que para este método es necesaria la creación de la derivada, la que esta dada por la ecuación \ref{eq:derivadaBis}. El análisis y pasos para llegar a esta derivada están explicadas en el Apéndice \ref{finales:apendice1}.
+
+\begin{equation}
+    \begin{split}
+        \frac{\partial{\chi^{2}_{bis}}}{\partial_{I_{k}}} &= \frac{-1}{N_{B}} \sum_{j} \frac{1}{\sigma^{2}_{Bj}} Re\bigg((V_{Bj} - V'_{Bj}) \bigg( \frac{\partial{V'_{Bj}}}{\partial{I_{k}}} \bigg)^{*} \bigg) \\
+        &= \frac{-1}{N_{B}} \sum_{j} \frac{1}{\sigma^{2}_{Bj}} Re\bigg((V_{Bj} - V'_{Bj}) V^{'*}_{Bj} \bigg( \frac{e^{2\pi i (u_{1j}x_{k} + v_{1j}y_{k})}}{V^{'*}_{1j}} + \frac{e^{2\pi i (u_{2j}x_{k} + v_{2j}y_{k})}}{V^{'*}_{2j}} + \frac{e^{2\pi i (u_{3j}x_{k} + v_{3j}y_{k})}}{V'^{'*}_{3j}}\bigg) \bigg) 
+    \end{split}
+    \label{eq:derivadaBis}
+\end{equation}
+
+\section{Gradiente conjugado}

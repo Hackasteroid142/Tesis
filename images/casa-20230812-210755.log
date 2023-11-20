@@ -1,0 +1,178 @@
+2023-08-12 21:07:57	INFO	::casa	
+2023-08-12 21:07:57	INFO	::casa	
+2023-08-12 21:07:57	INFO	::casa	
+2023-08-12 21:07:57	INFO	::casa	
+2023-08-12 21:07:57	INFO	::casa	Python version 3.8.10
+2023-08-12 21:07:57	INFO	::casa	CASA Version CASALITH 6.5.2.26
+2023-08-12 21:07:57	INFO	::casa	
+2023-08-12 21:07:57	INFO	::casa	Found an existing telemetry logfile: /home/hackasteroid/.casa/casastats-6.5.2.26-4421ac9980-20230812-024355.log
+2023-08-12 21:07:57	INFO	::casa	Telemetry log file: /home/hackasteroid/.casa/casastats-6.5.2.26-4421ac9980-20230812-024355.log
+2023-08-12 21:07:57	INFO	::casa	Checking telemetry submission interval
+2023-08-12 21:07:57	INFO	::casa	Telemetry submit interval not reached. Not submitting data.
+2023-08-12 21:07:57	INFO	::casa	Next telemetry data submission in: 6 days, 5:35:58.648077
+2023-08-12 21:07:57	INFO	::casa	
+2023-08-12 21:07:57	INFO	::casa	optional configuration file config.py not found, continuing CASA startup without it
+2023-08-12 21:07:57	INFO	::casa	
+2023-08-12 21:07:57	INFO	::casa	Checking Measures tables in data repository sub-directory /home/hackasteroid/Descargas/casa-6.5.2-26-py3.8/lib/py/lib/python3.8/site-packages/casadata/__data__/geodetic
+2023-08-12 21:07:57	INFO	::casa	  IERSeop2000 (version date, last date in table (UTC)): 2022/09/01/15:00, 2022/08/02/00:00:00
+2023-08-12 21:07:57	INFO	::casa	  IERSeop97 (version date, last date in table (UTC)): 2022/09/01/15:00, 2022/08/02/00:00:00
+2023-08-12 21:07:57	INFO	::casa	  IERSpredict (version date, last date in table (UTC)): 2022/09/04/15:00, 2022/12/03/00:00:00
+2023-08-12 21:07:57	INFO	::casa	  TAI_UTC (version date, last date in table (UTC)): 2022/08/23/15:00, 2017/01/01/00:00:00
+2023-08-12 21:08:08	INFO	tclean::::casa	##########################################
+2023-08-12 21:08:08	INFO	tclean::::casa	##### Begin Task: tclean             #####
+2023-08-12 21:08:08	INFO	tclean::::casa	tclean( vis='HD163296_p2_long_gpuvmem.ms/', selectdata=True, field='', spw='', timerange='', uvrange='', antenna='', scan='', observation='', intent='', datacolumn='corrected', imagename='HD163296_p2_long_gpuvmem', imsize=512, cell='0.005arcsec', phasecenter='', stokes='I', projection='SIN', startmodel='', specmode='mfs', reffreq='', nchan=-1, start='', width='', outframe='LSRK', veltype='radio', restfreq=[], interpolation='linear', perchanweightdensity=True, gridder='standard', facets=1, psfphasecenter='', wprojplanes=1, vptable='', mosweight=True, aterm=True, psterm=False, wbawp=True, conjbeams=False, cfcache='', usepointing=False, computepastep=360.0, rotatepastep=360.0, pointingoffsetsigdev=[], pblimit=0.2, normtype='flatnoise', deconvolver='multiscale', scales=[0, 10, 30, 90, 270], nterms=1, smallscalebias=0.0, fusedthreshold=0.0, largestscale=-1, restoration=True, restoringbeam=[], pbcor=False, outlierfile='', weighting='briggs', robust=-0.5, noise='1.0Jy', npixels=0, uvtaper=[], niter=0, gain=0.1, threshold='0.1mJy', nsigma=0.0, cycleniter=-1, cyclefactor=1.0, minpsffraction=0.05, maxpsffraction=0.8, interactive=False, nmajor=-1, usemask='user', mask='', pbmask=0.0, sidelobethreshold=3.0, noisethreshold=5.0, lownoisethreshold=1.5, negativethreshold=0.0, smoothfactor=1.0, minbeamfrac=0.3, cutthreshold=0.01, growiterations=75, dogrowprune=True, minpercentchange=-1.0, verbose=False, fastnoise=True, restart=True, savemodel='modelcolumn', calcres=True, calcpsf=True, psfcutoff=0.35, parallel=False )
+2023-08-12 21:08:08	INFO	tclean::::casa	Verifying Input Parameters
+2023-08-12 21:08:08	INFO		Clearing all model records in MS header.
+2023-08-12 21:08:08	INFO	SynthesisImagerVi2::selectData 	MS : HD163296_p2_long_gpuvmem.ms/ | [Opened with scratch model column]
+2023-08-12 21:08:08	INFO	SynthesisImagerVi2::selectData 	  NRows selected : 589711
+2023-08-12 21:08:09	SEVERE	MeasTable::dUTC(Double) (file casacore/measures/Measures/MeasTable.cc, line 4292)	Leap second table TAI_UTC seems out-of-date.
+2023-08-12 21:08:09	SEVERE	MeasTable::dUTC(Double) (file casacore/measures/Measures/MeasTable.cc, line 4292)+	Until the table is updated (see the CASA documentation or your system admin),
+2023-08-12 21:08:09	SEVERE	MeasTable::dUTC(Double) (file casacore/measures/Measures/MeasTable.cc, line 4292)+	times and coordinates derived from UTC could be wrong by 1s or more.
+2023-08-12 21:08:09	INFO	SynthesisImagerVi2::defineImage 	Define image coordinates for [HD163296_p2_long_gpuvmem] : 
+2023-08-12 21:08:09	INFO	SynthesisImagerVi2::defineImage 	Impars : start 
+2023-08-12 21:08:09	INFO	SynthesisImagerVi2::defineImage 	Shape : [512, 512, 1, 1]Spectral : [2.38983e+11] at [0] with increment [1.78367e+10]
+2023-08-12 21:08:09	INFO	SynthesisImagerVi2::defineImage 	Set Gridding options for [HD163296_p2_long_gpuvmem] with ftmachine : gridft
+2023-08-12 21:08:09	INFO	SynthesisImagerVi2::nSubCubeFitInMemory	Required memory: 0.01373 GB. Available mem.: 20.75 GB (rc, mem. fraction: 80%, memory: -) => Subcubes: 1. Processes on node: 1.
+2023-08-12 21:08:09	INFO	SynthesisImagerVi2::weight() 	Set imaging weights : Briggs weighting: sidelobes will be suppressed over full image
+2023-08-12 21:08:11	INFO	VisSetUtil::VisImagingWeight() 	Normal robustness, robust = -0.5
+2023-08-12 21:08:11	INFO	task_tclean::SynthesisDeconvolver::setupDeconvolution 	Set Deconvolution Options for [HD163296_p2_long_gpuvmem] : multiscale
+2023-08-12 21:08:11	INFO	SynthesisImager::makePSF 	----------------------------------------------------------- Make PSF ---------------------------------------------
+2023-08-12 21:08:17	INFO	SIImageStore::calcSensitivity 	[HD163296_p2_long_gpuvmem] Theoretical sensitivity (Jy/bm):0.000100781 
+2023-08-12 21:08:17	INFO	SIImageStore::getPSFGaussian 	Time to fit Gaussian to PSF 0.018383
+2023-08-12 21:08:17	INFO	SIImageStore::printBeamSet 	Beam : 0.0437907 arcsec, 0.037244 arcsec, 75.1476 deg
+2023-08-12 21:08:17	INFO	task_tclean::SynthesisImagerVi2::makePrimaryBeam 	vi2 : Evaluating Primary Beam model onto image grid(s)
+2023-08-12 21:08:19	INFO	task_tclean::SynthesisImager::executeMajorCycle 	----------------------------------------------------------- Run Major Cycle 1 -------------------------------------
+2023-08-12 21:08:19	INFO	task_tclean::SynthesisImagerVi2::runMajorCycle 	Saving model column
+2023-08-12 21:11:34	INFO	task_tclean::SDAlgorithmBase::restore 	[HD163296_p2_long_gpuvmem] : Restoring model image.
+2023-08-12 21:11:34	WARN	task_tclean::SIImageStore::restore (file src/code/synthesis/ImagerObjects/SIImageStore.cc, line 2247)	Restoring with an empty model image. Only residuals will be processed to form the output restored image.
+2023-08-12 21:11:36	INFO	task_tclean::SIImageStore::restore 	Beam for chan : 0 : 0.0437907 arcsec, 0.037244 arcsec, 75.1476 deg
+2023-08-12 21:11:36	INFO	tclean::::casa	Searching for images with prefix 'HD163296_p2_long_gpuvmem'... Found these, writing history into them: ['HD163296_p2_long_gpuvmem.image', 'HD163296_p2_long_gpuvmem.sumwt', 'HD163296_p2_long_gpuvmem.psf', 'HD163296_p2_long_gpuvmem.model', 'HD163296_p2_long_gpuvmem.pb', 'HD163296_p2_long_gpuvmem.residual']
+2023-08-12 21:11:38	INFO	tclean::::casa	Task tclean complete. Start time: 2023-08-12 17:08:08.149408 End time: 2023-08-12 17:11:37.635191
+2023-08-12 21:11:38	INFO	tclean::::casa	##### End Task: tclean               #####
+2023-08-12 21:11:38	INFO	tclean::::casa	##########################################
+2023-08-12 21:13:10	INFO	exportfits::::casa	##########################################
+2023-08-12 21:13:10	INFO	exportfits::::casa	##### Begin Task: exportfits         #####
+2023-08-12 21:13:10	INFO	exportfits::::casa	exportfits( imagename='HD163296_p2_long_gpuvmem.image/', fitsimage='HD163296_p2_long_gpuvmem.fits', velocity=False, optical=False, bitpix=-32, minpix=0, maxpix=-1, overwrite=False, dropstokes=False, stokeslast=True, history=False, dropdeg=False )
+2023-08-12 21:13:10	INFO	exportfits::ImageFactory::toFITS	Applying mask of name 'mask0'
+2023-08-12 21:13:10	INFO	exportfits::ImageFitsConverter::ImageHeaderToFITS 	Truncating miscinfo field useweightimage to useweigh
+2023-08-12 21:13:10	INFO	exportfits::::casa	Task exportfits complete. Start time: 2023-08-12 17:13:10.364470 End time: 2023-08-12 17:13:10.376742
+2023-08-12 21:13:10	INFO	exportfits::::casa	##### End Task: exportfits           #####
+2023-08-12 21:13:10	INFO	exportfits::::casa	##########################################
+2023-08-12 21:33:12	INFO	tclean::::casa	##########################################
+2023-08-12 21:33:12	INFO	tclean::::casa	##### Begin Task: tclean             #####
+2023-08-12 21:33:12	INFO	tclean::::casa	tclean( vis='HD163296_p3_long_gpuvmem.ms/', selectdata=True, field='', spw='', timerange='', uvrange='', antenna='', scan='', observation='', intent='', datacolumn='corrected', imagename='HD163296_p3_long_gpuvmem', imsize=512, cell='0.005arcsec', phasecenter='', stokes='I', projection='SIN', startmodel='', specmode='mfs', reffreq='', nchan=-1, start='', width='', outframe='LSRK', veltype='radio', restfreq=[], interpolation='linear', perchanweightdensity=True, gridder='standard', facets=1, psfphasecenter='', wprojplanes=1, vptable='', mosweight=True, aterm=True, psterm=False, wbawp=True, conjbeams=False, cfcache='', usepointing=False, computepastep=360.0, rotatepastep=360.0, pointingoffsetsigdev=[], pblimit=0.2, normtype='flatnoise', deconvolver='multiscale', scales=[0, 10, 30, 90, 270], nterms=1, smallscalebias=0.0, fusedthreshold=0.0, largestscale=-1, restoration=True, restoringbeam=[], pbcor=False, outlierfile='', weighting='briggs', robust=-0.5, noise='1.0Jy', npixels=0, uvtaper=[], niter=0, gain=0.1, threshold='0.1mJy', nsigma=0.0, cycleniter=-1, cyclefactor=1.0, minpsffraction=0.05, maxpsffraction=0.8, interactive=False, nmajor=-1, usemask='user', mask='', pbmask=0.0, sidelobethreshold=3.0, noisethreshold=5.0, lownoisethreshold=1.5, negativethreshold=0.0, smoothfactor=1.0, minbeamfrac=0.3, cutthreshold=0.01, growiterations=75, dogrowprune=True, minpercentchange=-1.0, verbose=False, fastnoise=True, restart=True, savemodel='modelcolumn', calcres=True, calcpsf=True, psfcutoff=0.35, parallel=False )
+2023-08-12 21:33:12	INFO	tclean::::casa	Verifying Input Parameters
+2023-08-12 21:33:12	INFO		Clearing all model records in MS header.
+2023-08-12 21:33:12	INFO	SynthesisImagerVi2::selectData 	MS : HD163296_p3_long_gpuvmem.ms/ | [Opened with scratch model column]
+2023-08-12 21:33:12	INFO	SynthesisImagerVi2::selectData 	  NRows selected : 589711
+2023-08-12 21:33:13	INFO	SynthesisImagerVi2::defineImage 	Define image coordinates for [HD163296_p3_long_gpuvmem] : 
+2023-08-12 21:33:13	INFO	SynthesisImagerVi2::defineImage 	Impars : start 
+2023-08-12 21:33:13	INFO	SynthesisImagerVi2::defineImage 	Shape : [512, 512, 1, 1]Spectral : [2.38983e+11] at [0] with increment [1.78367e+10]
+2023-08-12 21:33:13	INFO	SynthesisImagerVi2::defineImage 	Set Gridding options for [HD163296_p3_long_gpuvmem] with ftmachine : gridft
+2023-08-12 21:33:13	INFO	SynthesisImagerVi2::nSubCubeFitInMemory	Required memory: 0.01373 GB. Available mem.: 20 GB (rc, mem. fraction: 80%, memory: -) => Subcubes: 1. Processes on node: 1.
+2023-08-12 21:33:13	INFO	SynthesisImagerVi2::weight() 	Set imaging weights : Briggs weighting: sidelobes will be suppressed over full image
+2023-08-12 21:33:15	INFO	VisSetUtil::VisImagingWeight() 	Normal robustness, robust = -0.5
+2023-08-12 21:33:15	INFO	task_tclean::SynthesisDeconvolver::setupDeconvolution 	Set Deconvolution Options for [HD163296_p3_long_gpuvmem] : multiscale
+2023-08-12 21:33:15	INFO	SynthesisImager::makePSF 	----------------------------------------------------------- Make PSF ---------------------------------------------
+2023-08-12 21:33:21	INFO	SIImageStore::calcSensitivity 	[HD163296_p3_long_gpuvmem] Theoretical sensitivity (Jy/bm):0.000100781 
+2023-08-12 21:33:21	INFO	SIImageStore::getPSFGaussian 	Time to fit Gaussian to PSF 0.014513
+2023-08-12 21:33:21	INFO	SIImageStore::printBeamSet 	Beam : 0.0437907 arcsec, 0.037244 arcsec, 75.1476 deg
+2023-08-12 21:33:21	INFO	task_tclean::SynthesisImagerVi2::makePrimaryBeam 	vi2 : Evaluating Primary Beam model onto image grid(s)
+2023-08-12 21:33:22	INFO	task_tclean::SynthesisImager::executeMajorCycle 	----------------------------------------------------------- Run Major Cycle 1 -------------------------------------
+2023-08-12 21:33:22	INFO	task_tclean::SynthesisImagerVi2::runMajorCycle 	Saving model column
+2023-08-12 21:36:30	INFO	task_tclean::SDAlgorithmBase::restore 	[HD163296_p3_long_gpuvmem] : Restoring model image.
+2023-08-12 21:36:30	WARN	task_tclean::SIImageStore::restore (file src/code/synthesis/ImagerObjects/SIImageStore.cc, line 2247)	Restoring with an empty model image. Only residuals will be processed to form the output restored image.
+2023-08-12 21:36:32	INFO	task_tclean::SIImageStore::restore 	Beam for chan : 0 : 0.0437907 arcsec, 0.037244 arcsec, 75.1476 deg
+2023-08-12 21:36:32	INFO	tclean::::casa	Searching for images with prefix 'HD163296_p3_long_gpuvmem'... Found these, writing history into them: ['HD163296_p3_long_gpuvmem.residual', 'HD163296_p3_long_gpuvmem.sumwt', 'HD163296_p3_long_gpuvmem.image', 'HD163296_p3_long_gpuvmem.psf', 'HD163296_p3_long_gpuvmem.pb', 'HD163296_p3_long_gpuvmem.model']
+2023-08-12 21:36:34	INFO	tclean::::casa	Task tclean complete. Start time: 2023-08-12 17:33:12.178297 End time: 2023-08-12 17:36:33.705152
+2023-08-12 21:36:34	INFO	tclean::::casa	##### End Task: tclean               #####
+2023-08-12 21:36:34	INFO	tclean::::casa	##########################################
+2023-08-12 21:39:27	INFO	exportfits::::casa	##########################################
+2023-08-12 21:39:27	INFO	exportfits::::casa	##### Begin Task: exportfits         #####
+2023-08-12 21:39:27	INFO	exportfits::::casa	exportfits( imagename='HD163296_p3_long_gpuvmem.image/', fitsimage='HD163296_p3_long_gpuvmem.fits', velocity=False, optical=False, bitpix=-32, minpix=0, maxpix=-1, overwrite=False, dropstokes=False, stokeslast=True, history=False, dropdeg=False )
+2023-08-12 21:39:27	INFO	exportfits::ImageFactory::toFITS	Applying mask of name 'mask0'
+2023-08-12 21:39:27	INFO	exportfits::ImageFitsConverter::ImageHeaderToFITS 	Truncating miscinfo field useweightimage to useweigh
+2023-08-12 21:39:27	INFO	exportfits::::casa	Task exportfits complete. Start time: 2023-08-12 17:39:27.411534 End time: 2023-08-12 17:39:27.421337
+2023-08-12 21:39:27	INFO	exportfits::::casa	##### End Task: exportfits           #####
+2023-08-12 21:39:27	INFO	exportfits::::casa	##########################################
+2023-08-12 21:56:28	INFO	tclean::::casa	##########################################
+2023-08-12 21:56:28	INFO	tclean::::casa	##### Begin Task: tclean             #####
+2023-08-12 21:56:28	INFO	tclean::::casa	tclean( vis='HD163296_p4_long_gpuvmem.ms/', selectdata=True, field='', spw='', timerange='', uvrange='', antenna='', scan='', observation='', intent='', datacolumn='corrected', imagename='HD163296_p4_long_gpuvmem', imsize=512, cell='0.005arcsec', phasecenter='', stokes='I', projection='SIN', startmodel='', specmode='mfs', reffreq='', nchan=-1, start='', width='', outframe='LSRK', veltype='radio', restfreq=[], interpolation='linear', perchanweightdensity=True, gridder='standard', facets=1, psfphasecenter='', wprojplanes=1, vptable='', mosweight=True, aterm=True, psterm=False, wbawp=True, conjbeams=False, cfcache='', usepointing=False, computepastep=360.0, rotatepastep=360.0, pointingoffsetsigdev=[], pblimit=0.2, normtype='flatnoise', deconvolver='multiscale', scales=[0, 10, 30, 90, 270], nterms=1, smallscalebias=0.0, fusedthreshold=0.0, largestscale=-1, restoration=True, restoringbeam=[], pbcor=False, outlierfile='', weighting='briggs', robust=-0.5, noise='1.0Jy', npixels=0, uvtaper=[], niter=0, gain=0.1, threshold='0.1mJy', nsigma=0.0, cycleniter=-1, cyclefactor=1.0, minpsffraction=0.05, maxpsffraction=0.8, interactive=False, nmajor=-1, usemask='user', mask='', pbmask=0.0, sidelobethreshold=3.0, noisethreshold=5.0, lownoisethreshold=1.5, negativethreshold=0.0, smoothfactor=1.0, minbeamfrac=0.3, cutthreshold=0.01, growiterations=75, dogrowprune=True, minpercentchange=-1.0, verbose=False, fastnoise=True, restart=True, savemodel='modelcolumn', calcres=True, calcpsf=True, psfcutoff=0.35, parallel=False )
+2023-08-12 21:56:28	INFO	tclean::::casa	Verifying Input Parameters
+2023-08-12 21:56:28	INFO		Clearing all model records in MS header.
+2023-08-12 21:56:28	INFO	SynthesisImagerVi2::selectData 	MS : HD163296_p4_long_gpuvmem.ms/ | [Opened with scratch model column]
+2023-08-12 21:56:28	INFO	SynthesisImagerVi2::selectData 	  NRows selected : 589711
+2023-08-12 21:56:28	INFO	SynthesisImagerVi2::defineImage 	Define image coordinates for [HD163296_p4_long_gpuvmem] : 
+2023-08-12 21:56:29	INFO	SynthesisImagerVi2::defineImage 	Impars : start 
+2023-08-12 21:56:29	INFO	SynthesisImagerVi2::defineImage 	Shape : [512, 512, 1, 1]Spectral : [2.38983e+11] at [0] with increment [1.78367e+10]
+2023-08-12 21:56:29	INFO	SynthesisImagerVi2::defineImage 	Set Gridding options for [HD163296_p4_long_gpuvmem] with ftmachine : gridft
+2023-08-12 21:56:29	INFO	SynthesisImagerVi2::nSubCubeFitInMemory	Required memory: 0.01373 GB. Available mem.: 19.66 GB (rc, mem. fraction: 80%, memory: -) => Subcubes: 1. Processes on node: 1.
+2023-08-12 21:56:29	INFO	SynthesisImagerVi2::weight() 	Set imaging weights : Briggs weighting: sidelobes will be suppressed over full image
+2023-08-12 21:56:30	INFO	VisSetUtil::VisImagingWeight() 	Normal robustness, robust = -0.5
+2023-08-12 21:56:30	INFO	task_tclean::SynthesisDeconvolver::setupDeconvolution 	Set Deconvolution Options for [HD163296_p4_long_gpuvmem] : multiscale
+2023-08-12 21:56:30	INFO	SynthesisImager::makePSF 	----------------------------------------------------------- Make PSF ---------------------------------------------
+2023-08-12 21:56:36	INFO	SIImageStore::calcSensitivity 	[HD163296_p4_long_gpuvmem] Theoretical sensitivity (Jy/bm):0.000100781 
+2023-08-12 21:56:36	INFO	SIImageStore::getPSFGaussian 	Time to fit Gaussian to PSF 0.020999
+2023-08-12 21:56:36	INFO	SIImageStore::printBeamSet 	Beam : 0.0437907 arcsec, 0.037244 arcsec, 75.1476 deg
+2023-08-12 21:56:36	INFO	task_tclean::SynthesisImagerVi2::makePrimaryBeam 	vi2 : Evaluating Primary Beam model onto image grid(s)
+2023-08-12 21:56:37	INFO	task_tclean::SynthesisImager::executeMajorCycle 	----------------------------------------------------------- Run Major Cycle 1 -------------------------------------
+2023-08-12 21:56:37	INFO	task_tclean::SynthesisImagerVi2::runMajorCycle 	Saving model column
+2023-08-12 21:59:48	INFO	task_tclean::SDAlgorithmBase::restore 	[HD163296_p4_long_gpuvmem] : Restoring model image.
+2023-08-12 21:59:48	WARN	task_tclean::SIImageStore::restore (file src/code/synthesis/ImagerObjects/SIImageStore.cc, line 2247)	Restoring with an empty model image. Only residuals will be processed to form the output restored image.
+2023-08-12 21:59:50	INFO	task_tclean::SIImageStore::restore 	Beam for chan : 0 : 0.0437907 arcsec, 0.037244 arcsec, 75.1476 deg
+2023-08-12 21:59:50	INFO	tclean::::casa	Searching for images with prefix 'HD163296_p4_long_gpuvmem'... Found these, writing history into them: ['HD163296_p4_long_gpuvmem.image', 'HD163296_p4_long_gpuvmem.residual', 'HD163296_p4_long_gpuvmem.model', 'HD163296_p4_long_gpuvmem.psf', 'HD163296_p4_long_gpuvmem.pb', 'HD163296_p4_long_gpuvmem.sumwt']
+2023-08-12 21:59:52	INFO	tclean::::casa	Task tclean complete. Start time: 2023-08-12 17:56:27.609769 End time: 2023-08-12 17:59:52.092572
+2023-08-12 21:59:52	INFO	tclean::::casa	##### End Task: tclean               #####
+2023-08-12 21:59:52	INFO	tclean::::casa	##########################################
+2023-08-12 22:00:01	INFO	exportfits::::casa	##########################################
+2023-08-12 22:00:01	INFO	exportfits::::casa	##### Begin Task: exportfits         #####
+2023-08-12 22:00:01	INFO	exportfits::::casa	exportfits( imagename='HD163296_p4_long_gpuvmem.image/', fitsimage='HD163296_p4_long_gpuvmem.fits', velocity=False, optical=False, bitpix=-32, minpix=0, maxpix=-1, overwrite=False, dropstokes=False, stokeslast=True, history=False, dropdeg=False )
+2023-08-12 22:00:01	INFO	exportfits::ImageFactory::toFITS	Applying mask of name 'mask0'
+2023-08-12 22:00:01	INFO	exportfits::ImageFitsConverter::ImageHeaderToFITS 	Truncating miscinfo field useweightimage to useweigh
+2023-08-12 22:00:01	INFO	exportfits::::casa	Task exportfits complete. Start time: 2023-08-12 18:00:01.337639 End time: 2023-08-12 18:00:01.345440
+2023-08-12 22:00:01	INFO	exportfits::::casa	##### End Task: exportfits           #####
+2023-08-12 22:00:01	INFO	exportfits::::casa	##########################################
+2023-08-12 22:40:41	SEVERE	tclean::::casa	Exception Reported: Error in tclean: all elements of the vis vector parameter must be a path that exists (at least one element of "['HD163296_p5_long_gpuvmem.ms/']" does not exist)
+2023-08-12 22:40:41	INFO	tclean::::casa	Traceback (most recent call last):
+2023-08-12 22:40:41	INFO	tclean::::casa+	  File "/home/hackasteroid/Descargas/casa-6.5.2-26-py3.8/lib/py/lib/python3.8/site-packages/casashell/private/tclean.py", line 4138, in __call__
+2023-08-12 22:40:41	INFO	tclean::::casa+	    _return_result_ = _tclean_t( _invocation_parameters['vis'],_invocation_parameters['selectdata'],_invocation_parameters['field'],_invocation_parameters['spw'],_invocation_parameters['timerange'],_invocation_parameters['uvrange'],_invocation_parameters['antenna'],_invocation_parameters['scan'],_invocation_parameters['observation'],_invocation_parameters['intent'],_invocation_parameters['datacolumn'],_invocation_parameters['imagename'],_invocation_parameters['imsize'],_invocation_parameters['cell'],_invocation_parameters['phasecenter'],_invocation_parameters['stokes'],_invocation_parameters['projection'],_invocation_parameters['startmodel'],_invocation_parameters['specmode'],_invocation_parameters['reffreq'],_invocation_parameters['nchan'],_invocation_parameters['start'],_invocation_parameters['width'],_invocation_parameters['outframe'],_invocation_parameters['veltype'],_invocation_parameters['restfreq'],_invocation_parameters['interpolation'],_invocation_parameters['perchanweightdensity'],_invocation_parameters['gridder'],_invocation_parameters['facets'],_invocation_parameters['psfphasecenter'],_invocation_parameters['wprojplanes'],_invocation_parameters['vptable'],_invocation_parameters['mosweight'],_invocation_parameters['aterm'],_invocation_parameters['psterm'],_invocation_parameters['wbawp'],_invocation_parameters['conjbeams'],_invocation_parameters['cfcache'],_invocation_parameters['usepointing'],_invocation_parameters['computepastep'],_invocation_parameters['rotatepastep'],_invocation_parameters['pointingoffsetsigdev'],_invocation_parameters['pblimit'],_invocation_parameters['normtype'],_invocation_parameters['deconvolver'],_invocation_parameters['scales'],_invocation_parameters['nterms'],_invocation_parameters['smallscalebias'],_invocation_parameters['fusedthreshold'],_invocation_parameters['largestscale'],_invocation_parameters['restoration'],_invocation_parameters['restoringbeam'],_invocation_parameters['pbcor'],_invocation_parameters['outlierfile'],_invocation_parameters['weighting'],_invocation_parameters['robust'],_invocation_parameters['noise'],_invocation_parameters['npixels'],_invocation_parameters['uvtaper'],_invocation_parameters['niter'],_invocation_parameters['gain'],_invocation_parameters['threshold'],_invocation_parameters['nsigma'],_invocation_parameters['cycleniter'],_invocation_parameters['cyclefactor'],_invocation_parameters['minpsffraction'],_invocation_parameters['maxpsffraction'],_invocation_parameters['interactive'],_invocation_parameters['nmajor'],_invocation_parameters['usemask'],_invocation_parameters['mask'],_invocation_parameters['pbmask'],_invocation_parameters['sidelobethreshold'],_invocation_parameters['noisethreshold'],_invocation_parameters['lownoisethreshold'],_invocation_parameters['negativethreshold'],_invocation_parameters['smoothfactor'],_invocation_parameters['minbeamfrac'],_invocation_parameters['cutthreshold'],_invocation_parameters['growiterations'],_invocation_parameters['dogrowprune'],_invocation_parameters['minpercentchange'],_invocation_parameters['verbose'],_invocation_parameters['fastnoise'],_invocation_parameters['restart'],_invocation_parameters['savemodel'],_invocation_parameters['calcres'],_invocation_parameters['calcpsf'],_invocation_parameters['psfcutoff'],_invocation_parameters['parallel'] )
+2023-08-12 22:40:41	INFO	tclean::::casa+	  File "/home/hackasteroid/Descargas/casa-6.5.2-26-py3.8/lib/py/lib/python3.8/site-packages/casatasks/tclean.py", line 1744, in __call__
+2023-08-12 22:40:41	INFO	tclean::::casa+	    assert _pc.validate(doc,schema), create_error_string(_pc.errors)
+2023-08-12 22:40:41	INFO	tclean::::casa+	AssertionError: all elements of the vis vector parameter must be a path that exists (at least one element of "['HD163296_p5_long_gpuvmem.ms/']" does not exist)
+2023-08-12 22:41:21	INFO	tclean::::casa	##########################################
+2023-08-12 22:41:21	INFO	tclean::::casa	##### Begin Task: tclean             #####
+2023-08-12 22:41:21	INFO	tclean::::casa	tclean( vis='HD163296_p5_long_gpuvmem.ms/', selectdata=True, field='', spw='', timerange='', uvrange='', antenna='', scan='', observation='', intent='', datacolumn='corrected', imagename='HD163296_p5_long_gpuvmem', imsize=512, cell='0.005arcsec', phasecenter='', stokes='I', projection='SIN', startmodel='', specmode='mfs', reffreq='', nchan=-1, start='', width='', outframe='LSRK', veltype='radio', restfreq=[], interpolation='linear', perchanweightdensity=True, gridder='standard', facets=1, psfphasecenter='', wprojplanes=1, vptable='', mosweight=True, aterm=True, psterm=False, wbawp=True, conjbeams=False, cfcache='', usepointing=False, computepastep=360.0, rotatepastep=360.0, pointingoffsetsigdev=[], pblimit=0.2, normtype='flatnoise', deconvolver='multiscale', scales=[0, 10, 30, 90, 270], nterms=1, smallscalebias=0.0, fusedthreshold=0.0, largestscale=-1, restoration=True, restoringbeam=[], pbcor=False, outlierfile='', weighting='briggs', robust=-0.5, noise='1.0Jy', npixels=0, uvtaper=[], niter=0, gain=0.1, threshold='0.1mJy', nsigma=0.0, cycleniter=-1, cyclefactor=1.0, minpsffraction=0.05, maxpsffraction=0.8, interactive=False, nmajor=-1, usemask='user', mask='', pbmask=0.0, sidelobethreshold=3.0, noisethreshold=5.0, lownoisethreshold=1.5, negativethreshold=0.0, smoothfactor=1.0, minbeamfrac=0.3, cutthreshold=0.01, growiterations=75, dogrowprune=True, minpercentchange=-1.0, verbose=False, fastnoise=True, restart=True, savemodel='modelcolumn', calcres=True, calcpsf=True, psfcutoff=0.35, parallel=False )
+2023-08-12 22:41:21	INFO	tclean::::casa	Verifying Input Parameters
+2023-08-12 22:41:21	INFO		Clearing all model records in MS header.
+2023-08-12 22:41:21	INFO	SynthesisImagerVi2::selectData 	MS : HD163296_p5_long_gpuvmem.ms/ | [Opened with scratch model column]
+2023-08-12 22:41:22	INFO	SynthesisImagerVi2::selectData 	  NRows selected : 589711
+2023-08-12 22:41:22	INFO	SynthesisImagerVi2::defineImage 	Define image coordinates for [HD163296_p5_long_gpuvmem] : 
+2023-08-12 22:41:22	INFO	SynthesisImagerVi2::defineImage 	Impars : start 
+2023-08-12 22:41:22	INFO	SynthesisImagerVi2::defineImage 	Shape : [512, 512, 1, 1]Spectral : [2.38983e+11] at [0] with increment [1.78367e+10]
+2023-08-12 22:41:22	INFO	SynthesisImagerVi2::defineImage 	Set Gridding options for [HD163296_p5_long_gpuvmem] with ftmachine : gridft
+2023-08-12 22:41:22	INFO	SynthesisImagerVi2::nSubCubeFitInMemory	Required memory: 0.01373 GB. Available mem.: 19.68 GB (rc, mem. fraction: 80%, memory: -) => Subcubes: 1. Processes on node: 1.
+2023-08-12 22:41:22	INFO	SynthesisImagerVi2::weight() 	Set imaging weights : Briggs weighting: sidelobes will be suppressed over full image
+2023-08-12 22:41:24	INFO	VisSetUtil::VisImagingWeight() 	Normal robustness, robust = -0.5
+2023-08-12 22:41:24	INFO	task_tclean::SynthesisDeconvolver::setupDeconvolution 	Set Deconvolution Options for [HD163296_p5_long_gpuvmem] : multiscale
+2023-08-12 22:41:24	INFO	SynthesisImager::makePSF 	----------------------------------------------------------- Make PSF ---------------------------------------------
+2023-08-12 22:41:30	INFO	SIImageStore::calcSensitivity 	[HD163296_p5_long_gpuvmem] Theoretical sensitivity (Jy/bm):0.000100781 
+2023-08-12 22:41:30	INFO	SIImageStore::getPSFGaussian 	Time to fit Gaussian to PSF 0.005014
+2023-08-12 22:41:30	INFO	SIImageStore::printBeamSet 	Beam : 0.0437907 arcsec, 0.037244 arcsec, 75.1476 deg
+2023-08-12 22:41:30	INFO	task_tclean::SynthesisImagerVi2::makePrimaryBeam 	vi2 : Evaluating Primary Beam model onto image grid(s)
+2023-08-12 22:41:31	INFO	task_tclean::SynthesisImager::executeMajorCycle 	----------------------------------------------------------- Run Major Cycle 1 -------------------------------------
+2023-08-12 22:41:31	INFO	task_tclean::SynthesisImagerVi2::runMajorCycle 	Saving model column
+2023-08-12 22:44:42	INFO	task_tclean::SDAlgorithmBase::restore 	[HD163296_p5_long_gpuvmem] : Restoring model image.
+2023-08-12 22:44:42	WARN	task_tclean::SIImageStore::restore (file src/code/synthesis/ImagerObjects/SIImageStore.cc, line 2247)	Restoring with an empty model image. Only residuals will be processed to form the output restored image.
+2023-08-12 22:44:44	INFO	task_tclean::SIImageStore::restore 	Beam for chan : 0 : 0.0437907 arcsec, 0.037244 arcsec, 75.1476 deg
+2023-08-12 22:44:44	INFO	tclean::::casa	Searching for images with prefix 'HD163296_p5_long_gpuvmem'... Found these, writing history into them: ['HD163296_p5_long_gpuvmem.residual', 'HD163296_p5_long_gpuvmem.model', 'HD163296_p5_long_gpuvmem.image', 'HD163296_p5_long_gpuvmem.sumwt', 'HD163296_p5_long_gpuvmem.pb', 'HD163296_p5_long_gpuvmem.psf']
+2023-08-12 22:44:46	INFO	tclean::::casa	Task tclean complete. Start time: 2023-08-12 18:41:21.237547 End time: 2023-08-12 18:44:45.505619
+2023-08-12 22:44:46	INFO	tclean::::casa	##### End Task: tclean               #####
+2023-08-12 22:44:46	INFO	tclean::::casa	##########################################
+2023-08-12 22:45:27	INFO	exportfits::::casa	##########################################
+2023-08-12 22:45:27	INFO	exportfits::::casa	##### Begin Task: exportfits         #####
+2023-08-12 22:45:27	INFO	exportfits::::casa	exportfits( imagename='HD163296_p5_long_gpuvmem.image/', fitsimage='HD163296_p5_long_gpuvmem.fits', velocity=False, optical=False, bitpix=-32, minpix=0, maxpix=-1, overwrite=False, dropstokes=False, stokeslast=True, history=False, dropdeg=False )
+2023-08-12 22:45:27	INFO	exportfits::ImageFactory::toFITS	Applying mask of name 'mask0'
+2023-08-12 22:45:27	INFO	exportfits::ImageFitsConverter::ImageHeaderToFITS 	Truncating miscinfo field useweightimage to useweigh
+2023-08-12 22:45:27	INFO	exportfits::::casa	Task exportfits complete. Start time: 2023-08-12 18:45:27.118376 End time: 2023-08-12 18:45:27.126255
+2023-08-12 22:45:27	INFO	exportfits::::casa	##### End Task: exportfits           #####
+2023-08-12 22:45:27	INFO	exportfits::::casa	##########################################
